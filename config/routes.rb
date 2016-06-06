@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
+  #
+  # get 'sessions/new'
+  #
+  # get 'sessions/create'
+  #
+  # get 'sessions/destroy'
 
-  get 'sessions/new'
+  delete '/logout' => 'sessions#destroy', as: :logout
 
-  get 'sessions/create'
-
-  get 'sessions/destroy'
+  resources :sessions, only: [:new, :create]
 
   root 'users#index'
 
