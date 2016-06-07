@@ -17,11 +17,18 @@
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-  
+
 </head>
 <body>
 
-<%= yield %>
+  <% if logged_in? %>
+  <%= link_to current_user.username, edit_user_path(current_user) %>
+  <%= link_to "Logout", logout_path, {method: "DELETE"} %>
+  <% else %>
+      <%= link_to "Login", new_session_path %>
+  <% end %>
+
+  <%= yield %>
 
 </body>
 </html>
