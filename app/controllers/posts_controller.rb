@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authorize, only: [:new, :update, :edit, :update]
 
   def index
@@ -18,16 +18,21 @@ class PostsController < ApplicationController
     else
       render :new
     end
-
   end
 
   def show
   end
 
   def edit
+    redirect_to root_path unless @post.user == current_user
   end
 
   def update
+    if @post.update(edit_post_params)
+      redirect_to @post
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -40,5 +45,9 @@ private
 
   def post_params
     params.require(:post).permit(:title, :body)
+  end
+
+  def edit_post_params
+    params.require(:post).permit(:body)
   end
 end
