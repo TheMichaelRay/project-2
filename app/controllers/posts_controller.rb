@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show]
+  before_action :authorize, only: [:new, :update, :edit, :update]
 
   def index
   end
@@ -10,7 +11,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-
+    @post.user = current_user
     if @post.save
       redirect_to root_path
     else
@@ -37,6 +38,6 @@ private
   end
 
   def post_params
-    params.require(:post).permit(:title)
+    params.require(:post).permit(:title, :body)
   end
 end
