@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   before_action :authorize, only: [:new, :update, :edit, :update]
 
   def index
+    @posts = Post.all
   end
 
   def new
