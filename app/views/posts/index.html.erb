@@ -1,6 +1,6 @@
 <h1>ShoutOuts!</h1>
 <ol>
-  <% @posts.each do |p| %>
+  <% @posts.reverse_each do |p| %>
   <li><%= link_to p.title, post_path(p) %> by <%= p.user.username if p.user %></li>
   <% end %>
 </ol>
