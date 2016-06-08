@@ -20,6 +20,7 @@
 
 </head>
 <body>
+  <%= render 'partials/navbar' %>
 
   <% if logged_in? %>
   <%= link_to current_user.username, edit_user_path(current_user) %>
