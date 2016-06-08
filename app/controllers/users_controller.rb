@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authorize, only: [:edit, :update, :destroy]
 
   def index
@@ -26,6 +26,11 @@ class UsersController < ApplicationController
   end
 
   def update
+    if @user.update(edit_user_params)
+      redirect_to @user
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -39,4 +44,9 @@ private
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :username, :password, :password_confirmation, :avatar)
   end
+
+  def edit_user_params
+    params.require(:user).permit(:email, :first_name, :last_name, :avatar)
+  end
+
 end
