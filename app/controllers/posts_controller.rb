@@ -36,6 +36,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post.destroy if @post.user == current_user
+    redirect_to root_path
   end
 
 private

@@ -17,6 +17,7 @@
         <div class="form-group">
             <div class="col-md-8 col-md-offset-4">
                 <%= f.submit 'Post ShoutOut!', class: 'btn btn-success' %>
+                <%= link_to 'Delete ShoutOut!', @post, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure?'} %>
             </div>
         </div>
     </fieldset>
