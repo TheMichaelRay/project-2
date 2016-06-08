@@ -23,6 +23,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    redirect_to users_path unless @user == current_user
   end
 
   def update
