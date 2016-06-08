@@ -22,13 +22,6 @@
 <body>
   <%= render 'partials/navbar' %>
 
-  <% if logged_in? %>
-  <%= link_to current_user.username, edit_user_path(current_user) %>
-  <%= link_to "Logout", logout_path, {method: "DELETE"} %>
-  <% else %>
-      <%= link_to "Login", new_session_path %>
-  <% end %>
-
   <%= yield %>
 
 </body>
