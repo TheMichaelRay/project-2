@@ -1,4 +1,6 @@
 <h1>ShoutOuts!</h1>
+<!-- <a class="btn btn-primary" href="#" role="button">Link</a> -->
+<%= link_to 'Post', new_post_path, class: 'btn btn-primary', role: 'button' %>
 <ol>
   <% @posts.reverse_each do |p| %>
   <li><%= link_to p.title, post_path(p) %> by <%= p.user.username if p.user %></li>
