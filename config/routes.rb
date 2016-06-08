@@ -1,32 +1,12 @@
 Rails.application.routes.draw do
-  get 'comments/index'
 
-  get 'comments/new'
-
-  get 'comments/create'
-
-  get 'comments/update'
-
-  get 'comments/show'
-
-  get 'comments/edit'
-
-  get 'comments/destroy'
-
-  #
-  # get 'sessions/new'
-  #
-  # get 'sessions/create'
-  #
-  # get 'sessions/destroy'
+  root 'posts#index'
 
   delete '/logout' => 'sessions#destroy', as: :logout
 
   resources :sessions, only: [:new, :create]
 
-  root 'users#index'
-
-  resources :users, :posts
+  resources :users, :posts, :comments
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
