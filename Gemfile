@@ -32,6 +32,9 @@ gem "paperclip", "~> 4.3"
 # aws sdk
 gem 'aws-sdk', '< 2.0'
 
+
+gem 'dotenv-rails', :groups => [:development, :test]
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
