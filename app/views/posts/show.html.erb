@@ -3,4 +3,23 @@
 <%= image_tag @post.image.url(:medium), class: "img-rounded" if @post.image_file_name %>
 <p><%= @post.body %></p>
 
+<%= form_for @post, html: {class: 'new_user form-horizontal'} do |f| %>
+  <%= fields_for :comments do |comment| %>
+    <div class="row"><legend class="col-md-4 col-md-offset-4">New Comment</legend></div>
+    <fieldset>
+        <div class="form-group">
+            <%= comment.label :body, 'Comment', class: 'col-md-4 control-label' %>
+            <div class="col-md-5">
+                <%= comment.text_area :body, class: 'form-control', rows: "3"%>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-8 col-md-offset-4">
+                <%= comment.submit 'Post Comment!', class: 'btn btn-success' %>
+            </div>
+        </div>
+    </fieldset>
+  <% end %>
+<% end %>
+
 <%= link_to 'Comment', new_post_comment_path(params[:id]), class: 'btn btn-primary', role: 'button' %>

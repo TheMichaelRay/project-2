@@ -24,6 +24,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @comment = @post.comments.build
     redirect_to root_path unless @post.user == current_user
   end
 
@@ -50,6 +51,6 @@ private
   end
 
   def edit_post_params
-    params.require(:post).permit(:body)
+    params.require(:post).permit(:body, :comments_attributes => [:id, :body, :user])
   end
 end

@@ -14,6 +14,18 @@
                 <%= f.text_area :body, class: 'form-control', rows: "3"%>
             </div>
         </div>
+        <%= fields_for :comments do |comment| %>
+          <div class="row"><legend class="col-md-4 col-md-offset-4">New Comment</legend></div>
+          <fieldset>
+              <div class="form-group">
+                  <%= comment.label :body, 'Comment', class: 'col-md-4 control-label' %>
+                  <div class="col-md-5">
+                      <%= comment.text_area :body, class: 'form-control', rows: "3"%>
+                  </div>
+              </div>
+          </fieldset>
+        <% end %>
+
         <div class="form-group">
             <div class="col-md-8 col-md-offset-4">
                 <%= f.submit 'Save ShoutOut!', class: 'btn btn-success' %>

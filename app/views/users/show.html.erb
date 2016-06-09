@@ -1,2 +1,8 @@
 <h1><%= @user.first_name %> <%= @user.last_name %></h1>
 <%= image_tag @user.avatar.url(:medium) %>
+
+<ol>
+  <% @posts.reverse_each do |p| %>
+  <li><%= link_to p.title, post_path(p) %> by <%= link_to p.user.username, p.user if p.user %></li>
+  <% end %>
+</ol>
