@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# For Heroku
+gem 'rails_12factor', group: :production
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
@@ -26,13 +28,16 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-# photo uploads
+# Photo uploads
 gem "paperclip", "~> 4.3"
 
 # aws sdk
 gem 'aws-sdk', '< 2.0'
 
+# voting gem for liking/giving kudos
+gem 'acts_as_votable', '~> 0.10.0'
 
+# .env file for ignored ENV variables
 gem 'dotenv-rails', :groups => [:development, :test]
 
 # Use Unicorn as the app server
@@ -53,3 +58,5 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
+
+ruby "2.3.1"

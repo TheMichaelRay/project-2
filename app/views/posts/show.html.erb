@@ -3,8 +3,7 @@
 <%= image_tag @post.image.url(:medium), class: "img-rounded" if @post.image_file_name %>
 <p><%= @post.body %></p>
 
-<%= form_for @post, html: {class: 'new_user form-horizontal'} do |f| %>
-  <%= fields_for :comments do |comment| %>
+<%= form_for [@post, @comment], html: {class: 'new_user form-horizontal'} do |comment| %>
     <div class="row"><legend class="col-md-4 col-md-offset-4">New Comment</legend></div>
     <fieldset>
         <div class="form-group">
@@ -19,7 +18,6 @@
             </div>
         </div>
     </fieldset>
-  <% end %>
 <% end %>
 
-<%= link_to 'Comment', new_comment_path(params[:id]), class: 'btn btn-primary', role: 'button' %>
+<%= link_to 'Comment', new_post_comment_path(params[:id]), class: 'btn btn-primary', role: 'button' %>

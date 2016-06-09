@@ -1,19 +1,19 @@
 class CommentsController < ApplicationController
-  before_action :authorize only: [:new, :edit, :create, :update, :destroy]
+  before_action :authorize, only: [:new, :edit, :create, :update, :destroy]
 
   def index
   end
 
-  def new
-    @post = Post.find(params[:post_id])
-    @comment = @post.comment.new
-  end
+  # def new
+  #   @post = Post.find(params[:post_id])
+  #   @comment = @post.comment.new
+  # end
 
   def create
     @post = Post.find(params[:post_id])
     @comment = Comment.new(comment_params)
     @comment.user = current_user
-    @comment.post = params[:post_id]
+    @comment.post = @post
     if @comment.save
       redirect_to post_path(params[:post_id])
     else
