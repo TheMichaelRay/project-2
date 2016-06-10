@@ -1,3 +1,9 @@
+<div class="jumbotron">
+  <div class="container text-center light-gray">
+    <h1>Tell Us About Something Awesome!</h1>
+  </div>
+</div>
+<div class="container">
 <%= form_for @post, html: {multipart: true, class: 'new_user form-horizontal'} do |f| %>
     <div class="row"><legend class="col-md-4 col-md-offset-4">New ShoutOut!</legend></div>
     <fieldset>
@@ -26,3 +32,4 @@
         </div>
     </fieldset>
 <% end %>
+</div>
