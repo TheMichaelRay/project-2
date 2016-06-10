@@ -1,8 +1,25 @@
-<h1>ShoutOuts!</h1>
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1 class="display-3">Welcome to ShoutOut!</h1>
+    <p class="lead">ShoutOut is a place where you can come to brag about something awesome your friend did!</p>
+    <p class="lead">(Feel free to let us know if you did something awesome too, dont be shy!)</p>
+    <hr class="m-y-2">
+    <p>Post a picture, give a ShoutOut, and let everyone know when awesome things happen!</p>
+    <div class="text-center">
+      <%= link_to 'ShoutOut!', new_post_path, class: 'btn btn-primary', role: 'button' %>
+    </div>
+  </div>
+</div>
 <!-- <a class="btn btn-primary" href="#" role="button">Link</a> -->
-<%= link_to 'Post', new_post_path, class: 'btn btn-primary', role: 'button' %>
-<ol>
+
   <% @posts.reverse_each do |p| %>
-  <li><%= link_to p.title, post_path(p) %> by <%= link_to p.user.username, p.user if p.user %></li>
+  <div class="bg-info">
+    <div class="container">
+      <div class="row">
+          <h3>
+          <%= link_to p.title, post_path(p) %> <small> by <%= link_to p.user.username, p.user if p.user %></small>
+          </h3>
+      </div>
+    </div>
+  </div>
   <% end %>
-</ol>

@@ -3,6 +3,13 @@
 <%= image_tag @post.image.url(:medium), class: "img-rounded" if @post.image_file_name %>
 <p><%= @post.body %></p>
 
+<% @post.comments.each do |c| %>
+<div class="bg-info">
+  <h4><%= c.user.username %></h4>
+  <%= content_tag :p, c.body %>
+</div>
+<% end %>
+
 <%= form_for [@post, @comment], html: {class: 'new_user form-horizontal'} do |comment| %>
     <div class="row"><legend class="col-md-4 col-md-offset-4">New Comment</legend></div>
     <fieldset>
