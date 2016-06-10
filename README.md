@@ -85,6 +85,7 @@ The site is hosted online [here](https://fierce-hollows-46180.herokuapp.com/) th
 * View all of a user's posts from their user page
 * Increase mobile responsiveness
 * Make all usernames and emails unique and non-repeatable
+* add notifications for replies and comments
 
 
 --
