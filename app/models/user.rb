@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
     {:bucket => ENV["S3_SHOUTOUT_BUCKET"], :access_key_id => ENV["S3_ACCESS_KEY_ID"], :secret_access_key => ENV["S3_SECRET_KEY_ID"]}
   end
 
-  has_many :posts
-  has_many :comments
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
 end
