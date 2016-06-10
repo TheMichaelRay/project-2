@@ -1,3 +1,12 @@
+<div class="jumbotron">
+  <div class="container text-center light-gray">
+    <h1><%= @post.title %></h1>
+    <%= image_tag @post.image.url(:medium), class: "img-rounded" if @post.image_file_name %>
+    <p><%= @post.body %></p>
+  </div>
+</div>
+
+<div class="container">
 <%= form_for @post, html: {multipart: true, class: 'new_user form-horizontal'} do |f| %>
     <div class="row"><legend class="col-md-4 col-md-offset-4">Edit ShoutOut!</legend></div>
     <fieldset>
@@ -14,18 +23,6 @@
                 <%= f.text_area :body, class: 'form-control', rows: "3"%>
             </div>
         </div>
-        <%= fields_for :comments do |comment| %>
-          <div class="row"><legend class="col-md-4 col-md-offset-4">New Comment</legend></div>
-          <fieldset>
-              <div class="form-group">
-                  <%= comment.label :body, 'Comment', class: 'col-md-4 control-label' %>
-                  <div class="col-md-5">
-                      <%= comment.text_area :body, class: 'form-control', rows: "3"%>
-                  </div>
-              </div>
-          </fieldset>
-        <% end %>
-
         <div class="form-group">
             <div class="col-md-8 col-md-offset-4">
                 <%= f.submit 'Save ShoutOut!', class: 'btn btn-success' %>
@@ -34,3 +31,4 @@
         </div>
     </fieldset>
 <% end %>
+</div>
