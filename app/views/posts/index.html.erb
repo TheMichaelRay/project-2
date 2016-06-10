@@ -13,10 +13,10 @@
 <!-- <a class="btn btn-primary" href="#" role="button">Link</a> -->
 
   <% @posts.reverse_each do |p| %>
-  <div class="bg-info">
+  <div>
     <div class="container">
       <div class="row">
-          <h3>
+          <h3 class='list-group-item'>
           <%= link_to p.title, post_path(p) %> <small> by <%= link_to p.user.username, p.user if p.user %></small>
           </h3>
       </div>
