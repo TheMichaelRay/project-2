@@ -25,7 +25,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @comment = @post.comments.build
     redirect_to root_path unless @post.user == current_user
   end
 

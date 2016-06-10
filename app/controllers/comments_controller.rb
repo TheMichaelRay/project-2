@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authorize, only: [:new, :edit, :create, :update, :destroy]
-
+  before_action :set_comment, only: [:edit, :update]
   def index
   end
 
@@ -22,12 +22,19 @@ class CommentsController < ApplicationController
   end
 
   def update
+    if @comment.update(comment_params)
+      redirect_to @comment.post
+    else
+      render :edit
+    end
   end
 
   def show
   end
 
   def edit
+    @post = Post.find(params[:post_id])
+    redirect_to root_path unless @comment.user == current_user
   end
 
   def destroy
@@ -39,10 +46,6 @@ private
   end
 
   def comment_params
-    params.require(:comment).permit(:body)
-  end
-
-  def edit_comment_params
     params.require(:comment).permit(:body)
   end
 end

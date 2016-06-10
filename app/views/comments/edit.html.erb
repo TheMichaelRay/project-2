@@ -1,2 +1,28 @@
-<h1>Comments#edit</h1>
-<p>Find me in app/views/comments/edit.html.erb</p>
+<div class="jumbotron">
+  <div class="container text-center">
+    <h3 class='light-gray'>Comment for post: <%= link_to @post.title, @post, class: "light-gray"%></h3>
+    <div class="well well-sm col-md-4 col-md-offset-4 text-left">
+      <p><%= @comment.body %></p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<%= form_for [@post, @comment], html: {class: 'new_user form-horizontal'} do |f| %>
+    <div class="row"><legend class="col-md-4 col-md-offset-4">Edit Comment</legend></div>
+    <fieldset>
+        <div class="form-group">
+            <%= f.label :body, 'Body:', class: 'col-md-4 control-label' %>
+            <div class="col-md-5">
+                <%= f.text_area :body, class: 'form-control', rows: "3"%>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-8 col-md-offset-4">
+                <%= f.submit 'Save Comment!', class: 'btn btn-success' %>
+                <%= link_to 'Delete Comment!', @post, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure?'} %>
+            </div>
+        </div>
+    </fieldset>
+<% end %>
+</div>
