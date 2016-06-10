@@ -14,7 +14,9 @@
  *= require_self
  */
 
-
+.icon-bar {
+  background-color: #337ab7;
+}
 .light-gray {
   color: #eee;
 }
