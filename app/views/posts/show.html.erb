@@ -16,7 +16,7 @@
   <% @post.comments.each do |c| %>
       <div class="row">
           <div class='list-group-item col-md-8 col-md-offset-2'>
-            <h4><%= link_to c.user.username, c.user %> <small><%= time_ago_in_words(c.created_at) %> ago.</small><h4>
+            <h4><%= link_to c.user.username, c.user %> <small><%= time_ago_in_words(c.created_at) %> ago.</small><h4><%= link_to "edit", edit_post_comment_path(@post, c) if c.user == current_user %>
             <%= content_tag :p, c.body %>
           </div>
       </div>
