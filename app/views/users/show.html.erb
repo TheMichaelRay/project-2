@@ -1,8 +1,19 @@
-<h1><%= @user.first_name %> <%= @user.last_name %></h1>
-<%= image_tag @user.avatar.url(:medium) %>
+<div class="jumbotron">
+  <div class="container text-center light-gray">
+    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+    <%= image_tag @user.avatar.url(:medium) %>
+  </div>
+</div>
 
-<ol>
-  <% @posts.reverse_each do |p| %>
-  <li><%= link_to p.title, post_path(p) %> by <%= link_to p.user.username, p.user if p.user %></li>
+<div class="container">
+  <div class="row">
+    <h3 class="col-md-8 col-md-offset-2">Post History</h3>
+  </div>
+  <% @user.posts.reverse_each do |p| %>
+      <div class="row">
+          <h3 class='list-group-item col-md-8 col-md-offset-2'>
+          <%= link_to p.title, post_path(p) %> <small> by <%= link_to p.user.username, p.user if p.user %></small>
+          </h3>
+      </div>
   <% end %>
-</ol>
+</div>
